@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-Live Site [Simple E-commerce Shop React](https://www.simple-ecommerce-asaduzzaman599.netlify.app).
+Live Site [Simple E-commerce Shop React](https://simple-ecommerce-asaduzzaman599.netlify.app/).
 
 ## Available Scripts
 
