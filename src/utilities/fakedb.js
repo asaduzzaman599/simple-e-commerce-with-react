@@ -12,8 +12,17 @@ const addTolocalStorage = (id) =>{
     }else{
         cart[id]=1;
     }
-    console.log(cart)
     localStorage.setItem('cart-shopping',JSON.stringify(cart))
+}
+
+const getCartFromLocalStorage = () =>{
+    let cart = localStorage.getItem('cart-shopping');
+    if(cart){
+        cart = JSON.parse(cart);
+    }else{
+        cart = {}
+    }
+    return cart;
 }
 
 const removeFromDb = id =>{
@@ -33,6 +42,7 @@ const deleteShoppingCart = () =>{
 
 export {
     addTolocalStorage, 
+    getCartFromLocalStorage,
     removeFromDb,
     deleteShoppingCart
 }

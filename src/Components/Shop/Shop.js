@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { addTolocalStorage } from '../../utilities/fakedb';
+import { addTolocalStorage, getCartFromLocalStorage } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
@@ -13,6 +13,7 @@ const Shop = () => {
         setItem([...items,product])
         addTolocalStorage(product.id)
     }
+
     useEffect(()=>{
         console.log(items)
     },[items]);
@@ -21,6 +22,21 @@ const Shop = () => {
         .then(res=> res.json())
         .then(data=>setProducts(data))
     },[])
+
+    useEffect(()=>{
+        const cartItem = getCartFromLocalStorage();
+        
+        for(const id in cartItem){
+            const availableProduct = products.find(storedProduct => storedProduct.id === id); 
+            
+           if(availableProduct){
+            availableProduct.quantity = cartItem[id];
+            setItem([...items,availableProduct])
+           }
+            
+
+        }
+    },[products])
 
     
     return (
