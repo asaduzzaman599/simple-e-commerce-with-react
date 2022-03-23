@@ -10,7 +10,8 @@ const Product = ({product,selectItem}) => {
 
     const {name,seller,ratings,img,price} = product
     return (
-        <div className='product'>
+        <div className='product' data-aos="fade-up"
+        data-aos-anchor-placement="top-center">
             <img src={img} alt="" />
             <div className="product-info">
             <h3 className='product-name'>{name}</h3>

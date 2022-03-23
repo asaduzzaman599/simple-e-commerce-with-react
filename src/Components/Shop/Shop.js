@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { addTolocalStorage, getCartFromLocalStorage } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
+import Footer from '../Footer/Footer';
 import Product from '../Product/Product';
 import './Shop.css'
 const Shop = () => {
@@ -9,14 +10,22 @@ const Shop = () => {
     const [items, setItem] = useState([])
 
     const selectItem = (product) =>{
+        const existProduct = items.find(item => item.id === product.id);
 
-        setItem([...items,product])
+        if(existProduct){
+            const remaining = items.filter(item => item.id !== product.id);
+
+            product.quantity = product.quantity+1;
+            setItem([...remaining,product])
+        }else{
+            product.quantity = 1;
+            setItem([...items,product])
+        }
+
         addTolocalStorage(product.id)
     }
 
-    useEffect(()=>{
-        console.log(items)
-    },[items]);
+    
     useEffect(()=>{
         fetch('products.json')
         .then(res=> res.json())
@@ -25,17 +34,18 @@ const Shop = () => {
 
     useEffect(()=>{
         const cartItem = getCartFromLocalStorage();
-        
+        const storedItem = []
         for(const id in cartItem){
             const availableProduct = products.find(storedProduct => storedProduct.id === id); 
             
            if(availableProduct){
             availableProduct.quantity = cartItem[id];
-            setItem([...items,availableProduct])
+            storedItem.push(availableProduct)
            }
             
 
         }
+        setItem([...storedItem])
     },[products])
 
     
@@ -47,6 +57,7 @@ const Shop = () => {
                     selectItem={selectItem}
                     product={product}></Product>)
             }
+            
         </div>
         <div className="cart-container">
             <Cart selectedItem={items}></Cart>
