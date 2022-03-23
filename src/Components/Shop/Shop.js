@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { addTolocalStorage } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
@@ -8,8 +9,9 @@ const Shop = () => {
     const [items, setItem] = useState([])
 
     const selectItem = (product) =>{
+
         setItem([...items,product])
-        
+        addTolocalStorage(product.id)
     }
     useEffect(()=>{
         console.log(items)
