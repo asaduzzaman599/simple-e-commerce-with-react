@@ -3,7 +3,6 @@ import { useCart } from '../../hook/useCart';
 import { useProduct } from '../../hook/useProduct';
 import { addTolocalStorage, getCartFromLocalStorage } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
-import Footer from '../Footer/Footer';
 import Product from '../Product/Product';
 import './Shop.css'
 const Shop = () => {
