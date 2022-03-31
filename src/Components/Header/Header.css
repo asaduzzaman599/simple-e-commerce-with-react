@@ -12,7 +12,9 @@
     justify-content: space-between;
     align-items: center;
 }
-
+.menu{
+    display: flex;
+}
 .menu a {
     text-decoration: none;
     font-family: 'Lato';
