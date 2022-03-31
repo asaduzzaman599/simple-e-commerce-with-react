@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { useCart } from '../../hook/useCart';
+import { useProduct } from '../../hook/useProduct';
 import { addTolocalStorage, getCartFromLocalStorage } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Footer from '../Footer/Footer';
 import Product from '../Product/Product';
 import './Shop.css'
 const Shop = () => {
-    const [products, setProducts] = useState([]);
-
-    const [items, setItem] = useState([])
+    const [products, setProducts] = useProduct();
+    const [items, setItem] = useCart(products);
 
     const selectItem = (product) =>{
         const existProduct = items.find(item => item.id === product.id);
@@ -26,7 +27,7 @@ const Shop = () => {
     }
 
     
-    useEffect(()=>{
+    /* useEffect(()=>{
         fetch('products.json')
         .then(res=> res.json())
         .then(data=>setProducts(data))
@@ -46,7 +47,7 @@ const Shop = () => {
 
         }
         setItem([...storedItem])
-    },[products])
+    },[products]) */
 
     
     return (
