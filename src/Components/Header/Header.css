@@ -14,6 +14,7 @@
 }
 .menu{
     display: flex;
+    align-items: center;
 }
 .menu a {
     text-decoration: none;
@@ -23,4 +24,41 @@
     font-size: 17px;
     color: #fff;
     margin-left: 36px;
+}
+.pro-img{
+    width: 28px;
+    margin-left: 10px;
+    position: relative;
+}
+.pro-img img{
+    width: 100%;
+    border-radius: 50%;
+    border: 1px solid black;
+
+}
+.pro-img img:hover{
+    width: 100%;
+    border-radius: 50%;
+    border: 1px solid white;
+
+}
+.pro-info{
+    position: absolute;
+    padding: 10px;
+    text-align: center;
+    top:34px;
+    right: -30px;
+    background: rgb(233, 201, 152);
+    z-index: 2;
+}
+
+.pro-info button{
+    border: none;
+    background-color:#1C2B35 ;
+    color:white;
+    font-size: 15px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: 1px solid #1C2B35;
+    transition: 0.5s;
 }
