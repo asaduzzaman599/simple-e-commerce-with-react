@@ -31,7 +31,7 @@ const OrderReview = () => {
                 <div className="review-cart-conatainer">
                 <Cart 
                 selectedItem={cart}
-                ></Cart></div>
+                ><button>Confirm Order</button></Cart></div>
             </div>
         </div>
     );

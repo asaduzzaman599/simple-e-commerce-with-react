@@ -1,0 +1,96 @@
+.form-container {
+    width: 500px;
+
+    margin: 110px auto;
+    background: #FFFFFF;
+    border: 1px solid #95A0A7;
+    box-sizing: border-box;
+    border-radius: 8px;
+    text-align: center;
+
+}
+
+.form-title {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 42px;
+    /* identical to box height */
+
+    color: #2A414F;
+}
+
+.input-group {
+    width: 415px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    text-align: left;
+    display: block;
+}
+
+.input-group input {
+    width: 415px;
+    height: 55px;
+    left: 518px;
+    top: 426px;
+
+    border: 1px solid #95A0A7;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.form-container .submit {
+    width: 415px;
+    height: 55px;
+    border: none;
+    background: rgba(255, 153, 0, 0.3);
+    border-radius: 5px;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+
+.form-container .submit:hover {
+
+    background: rgba(255, 153, 0, 0.7);
+}
+
+.form-container a {
+    text-decoration: none;
+    color: #FF9900;
+}
+.or{
+    display:flex;
+    align-items: center;
+    margin: 30px 0;
+    color: #95A0A7;
+}
+
+.hr {
+    width: 145px;
+    height: 0px;
+    margin: 0 auto;
+
+    border: 1px solid #95A0A7;
+}
+.form-container button{
+    width: 415px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin: 0 auto;
+    padding: 10px;
+    gap: 10px;
+    border: 1px solid #95A0A7;
+    box-sizing: border-box;
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+.form-container button img{
+    width: 32px;
+}

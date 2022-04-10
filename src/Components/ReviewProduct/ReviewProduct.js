@@ -8,7 +8,7 @@ const ReviewProduct = ({product,removeItemfromCart}) => {
     const {name,img,price} = product;
     return (
         <div className='review-product'>
-            <div className='product-info'>
+            <div className='product-review-info'>
             <img src={img} alt="" />
             <div>
                 <h3>{name}</h3>

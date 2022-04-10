@@ -7,4 +7,21 @@
 }
 .cart p,h3{
 }
-
+.cart a{
+    text-decoration: none;
+}
+.cart button,.cart a{
+    border: none;
+    background-color:#1C2B35 ;
+    color:white;
+    font-size: 15px;
+    padding: 6px 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #1C2B35;
+    transition: 0.5s;
+}
+.cart button:hover,.cart a:hover{
+    color:#1C2B35;
+    background-color: white;
+}

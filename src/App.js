@@ -7,6 +7,8 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Route,  Routes } from 'react-router-dom';
 import OrderReview from './Components/OrderReview/OrderReview';
+import SignIn from './Components/SignIn/SignIn';
+import SignUp from './Components/SignUp/SignUp';
 
 function App() {
 
@@ -18,6 +20,8 @@ function App() {
         <Route path="/" element={<Shop></Shop>}></Route>
         <Route path="/shop" element={<Shop></Shop>}></Route>
         <Route path="/order" element={<OrderReview></OrderReview>}></Route>
+        <Route path="/signin" element={<SignIn></SignIn>}></Route>
+        <Route path="/signup" element={<SignUp></SignUp>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
