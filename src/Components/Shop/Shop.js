@@ -8,7 +8,7 @@ import Product from '../Product/Product';
 import './Shop.css'
 const Shop = () => {
     const [products, setProducts] = useState([]);
-    const [items, setItem] = useCart(products);
+    const [items, setItem] = useCart();
     const [pageSize, setPageSize] = useState(0)
     const [page, setPage] = useState(0)
     const [size, setSize] = useState(10)
@@ -91,7 +91,7 @@ const Shop = () => {
 
                 <div className="paginations">
                     {
-                        [...Array(pageSize).keys()].map(number => <button style={page === number ? { backgroundColor: "goldenrod", color: "white" } : {}} onClick={() => setPage(number)}>{number + 1}</button>)
+                        [...Array(pageSize).keys()].map(number => <button key={number} style={page === number ? { backgroundColor: "goldenrod", color: "white" } : {}} onClick={() => setPage(number)}>{number + 1}</button>)
                     }
                     <select name="" id="" onChange={(e) => setSize(e.target.value)} defaultValue="10">
                         <option value="5">5</option>
