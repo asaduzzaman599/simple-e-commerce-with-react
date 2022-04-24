@@ -7,7 +7,7 @@ import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
 const Shop = () => {
-    const [products, setProducts] = useProduct();
+    const [products, setProducts] = useState([]);
     const [items, setItem] = useCart(products);
     const [pageSize, setPageSize] = useState(0)
     const [page, setPage] = useState(0)
@@ -43,6 +43,17 @@ const Shop = () => {
 
             })
     }, [])
+
+
+    useEffect(() => {
+        const url = `http://localhost:4000/product?size=${size}&page=${page}`
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                setProducts(data)
+
+            })
+    }, [size, page])
     /* useEffect(()=>{
         fetch('products.json')
         .then(res=> res.json())
