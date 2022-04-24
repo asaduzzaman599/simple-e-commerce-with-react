@@ -9,12 +9,14 @@ import './Shop.css'
 const Shop = () => {
     const [products, setProducts] = useProduct();
     const [items, setItem] = useCart(products);
-    
+    const [pageSize, setPageSize] = useState(0)
+    const [page, setPage] = useState(0)
+    const [size, setSize] = useState(10)
     const selectItem = (product) => {
-        const existProduct = items.find(item => item.id === product.id);
+        const existProduct = items.find(item => item._id === product._id);
 
         if (existProduct) {
-            const remaining = items.filter(item => item.id !== product.id);
+            const remaining = items.filter(item => item._id !== product._id);
 
             product.quantity = product.quantity + 1;
             setItem([...remaining, product])
@@ -23,14 +25,24 @@ const Shop = () => {
             setItem([...items, product])
         }
 
-        addTolocalStorage(product.id)
+        addTolocalStorage(product._id)
     }
 
-    const clearCart=()=>{
+    const clearCart = () => {
         setItem([]);
         deleteShoppingCart()
     }
 
+    useEffect(() => {
+        fetch('http://localhost:4000/productcount')
+            .then(res => res.json())
+            .then(data => {
+                const count = data.count;
+
+                setPageSize(Math.ceil(count / size))
+
+            })
+    }, [])
     /* useEffect(()=>{
         fetch('products.json')
         .then(res=> res.json())
@@ -41,7 +53,7 @@ const Shop = () => {
         const cartItem = getCartFromLocalStorage();
         const storedItem = []
         for(const id in cartItem){
-            const availableProduct = products.find(storedProduct => storedProduct.id === id); 
+            const availableProduct = products.find(storedProduct => storedProduct._id === id); 
             
            if(availableProduct){
             availableProduct.quantity = cartItem[id];
@@ -56,13 +68,27 @@ const Shop = () => {
 
     return (
         <div className='shop-container'>
-            <div className="product-container">
-                {
-                    products.map(product => <Product key={product.id}
-                        selectItem={selectItem}
-                        product={product}></Product>)
-                }
+            <div >
+                <div className="product-container">
+                    {
+                        products.map(product => <Product key={product._id}
+                            selectItem={selectItem}
+                            product={product}></Product>)
+                    }
 
+                </div>
+
+                <div className="paginations">
+                    {
+                        [...Array(pageSize).keys()].map(number => <button style={page === number ? { backgroundColor: "goldenrod", color: "white" } : {}} onClick={() => setPage(number)}>{number + 1}</button>)
+                    }
+                    <select name="" id="" onChange={(e) => setSize(e.target.value)} defaultValue="10">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </select>
+                </div>
             </div>
             <div className="cart-container">
                 <Cart selectedItem={items} clearCart={clearCart}>
